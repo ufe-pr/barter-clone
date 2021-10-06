@@ -1,0 +1,7 @@
+<svg height="19" viewBox="0 0 26 19" width="26" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd" id="cardIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.636"
+        transform="translate(1 1)" stroke="black">
+        <rect height="16.07" rx="1.636" width="22.5" x=".75" y=".73"></rect>
+        <path d="M1.636 5.113h20.728M5.25 9.496h8.25M5.25 12.418h5.25"></path>
+    </g>
+</svg>
