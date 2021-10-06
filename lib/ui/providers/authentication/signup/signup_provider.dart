@@ -9,10 +9,10 @@ class SignUp extends StateNotifier<SignUpState> {
   ///
   /// All fields are required.
   Future<void> signUp(
-      {String email,
-      String iso2Code,
-      String phoneNumber,
-      String referralCode}) async {
+      {String? email,
+      String? iso2Code,
+      String? phoneNumber,
+      String? referralCode}) async {
     state = SignUpState.loading(state); // Update state so button gets disabled
 
     // TODO: Perform processing of details from API

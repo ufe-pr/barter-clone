@@ -11,9 +11,9 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
-  TabController _tabController;
-  TextEditingController _emailController, _phoneNumberController;
-  String _selectedCountry;
+  TabController? _tabController;
+  TextEditingController? _emailController, _phoneNumberController;
+  String? _selectedCountry;
 
   @override
   void initState() {
@@ -23,8 +23,8 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
     var login = context.read(loginProvider);
 
     // Add listener to update the state when tabs are changed
-    _tabController.addListener(() {
-      var method = _tabController.index == 0
+    _tabController!.addListener(() {
+      var method = _tabController!.index == 0
           ? SignInMethod.PHONE_NUMBER
           : SignInMethod.EMAIL;
       login.updateMethod(method);
@@ -83,7 +83,7 @@ class _LoginViewState extends State<LoginView> with TickerProviderStateMixin {
 class AppBarTitle extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final state = watch(loginProvider.state);
+    final state = watch(loginProvider);
 
     String text = "Sign in";
     switch (state.method) {
@@ -100,21 +100,21 @@ class AppBarTitle extends ConsumerWidget {
 }
 
 class LoginBody extends ConsumerWidget {
-  final TextEditingController emailController, phoneNumberController;
+  final TextEditingController? emailController, phoneNumberController;
   final ValueChanged<String> onCountryChanged;
-  final String selectedCountryIso;
+  final String? selectedCountryIso;
 
   LoginBody(
-      {Key key,
-      @required this.selectedCountryIso,
-      @required this.emailController,
-      @required this.phoneNumberController,
-      @required this.onCountryChanged})
+      {Key? key,
+      required this.selectedCountryIso,
+      required this.emailController,
+      required this.phoneNumberController,
+      required this.onCountryChanged})
       : super(key: key);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final state = watch(loginProvider.state);
+    final state = watch(loginProvider);
 
     // Build display text string
     String baseText =
@@ -159,7 +159,9 @@ class LoginBody extends ConsumerWidget {
                 DropdownMenuItem(child: Text("+44"), value: 'GB'),
                 DropdownMenuItem(child: Text("+256"), value: 'UG'),
               ],
-              onChanged: onCountryChanged,
+              onChanged: (String? v) {
+                if (v != null) onCountryChanged(v);
+              },
             ),
           ),
         ),

@@ -36,10 +36,10 @@ class _PasswordViewState extends State<PasswordView> {
 }
 
 class PasswordBody extends ConsumerWidget {
-  final bool passwordVisible;
-  final VoidCallback togglePasswordVisibility;
+  final bool? passwordVisible;
+  final VoidCallback? togglePasswordVisibility;
 
-  PasswordBody({Key key, this.passwordVisible, this.togglePasswordVisibility})
+  PasswordBody({Key? key, this.passwordVisible, this.togglePasswordVisibility})
       : super(key: key);
   @override
   Widget build(BuildContext context, ScopedReader watch) {
@@ -49,10 +49,10 @@ class PasswordBody extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           TextFormField(
-            obscureText: !this.passwordVisible,
+            obscureText: !this.passwordVisible!,
             decoration: InputDecoration(
               suffixIcon: IconButton(
-                icon: Icon(this.passwordVisible
+                icon: Icon(this.passwordVisible!
                     ? Icons.visibility
                     : Icons.visibility_off),
                 onPressed: togglePasswordVisibility,

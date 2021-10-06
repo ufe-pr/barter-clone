@@ -48,11 +48,11 @@ class _DashboardCardsViewState extends State<DashboardCardsView> {
 }
 
 class VirtualCard extends StatelessWidget {
-  final String cardNumber;
-  final String fullName;
-  final String date;
+  final String? cardNumber;
+  final String? fullName;
+  final String? date;
 
-  const VirtualCard({Key key, this.cardNumber, this.fullName, this.date})
+  const VirtualCard({Key? key, this.cardNumber, this.fullName, this.date})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

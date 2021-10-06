@@ -59,7 +59,7 @@ class SignUpBody extends ConsumerWidget {
                       DropdownMenuItem(child: Text("+44"), value: 'GB'),
                       DropdownMenuItem(child: Text("+256"), value: 'UG'),
                     ],
-                    onChanged: (_) {},
+                    onChanged: (dynamic _) {},
                   ),
                 ),
               ),

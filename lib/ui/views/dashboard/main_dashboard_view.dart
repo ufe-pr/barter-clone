@@ -5,15 +5,15 @@ import 'cards/dashboard_cards_view.dart';
 import 'home/dashboard_home_view.dart';
 
 class MainDashboardView extends StatefulWidget {
-  final int index;
+  final int? index;
 
-  const MainDashboardView({Key key, this.index}) : super(key: key);
+  const MainDashboardView({Key? key, this.index}) : super(key: key);
   @override
   _MainDashboardViewState createState() => _MainDashboardViewState();
 }
 
 class _MainDashboardViewState extends State<MainDashboardView> {
-  int _selectedIndex;
+  late int _selectedIndex;
 
   @override
   void initState() {

@@ -6,7 +6,7 @@ class Login extends StateNotifier<SignInState> {
   Login() : super(SignInState());
 
   Future<void> signIn(
-      {String iso2Code, String phoneNumber, String email}) async {
+      {String? iso2Code, String? phoneNumber, String? email}) async {
     switch (state.method) {
       case SignInMethod.PHONE_NUMBER:
         _signInWithPhoneNumber(iso2Code, phoneNumber);
@@ -25,7 +25,7 @@ class Login extends StateNotifier<SignInState> {
   }
 
   Future<void> _signInWithPhoneNumber(
-      String iso2Code, String phoneNumber) async {
+      String? iso2Code, String? phoneNumber) async {
     state = SignInState.loading(state);
 
     // TODO: Perform processing of details from API
@@ -34,7 +34,7 @@ class Login extends StateNotifier<SignInState> {
     // TODO: Navigate to next page // Update state so button gets disabled
   }
 
-  Future<void> _signInWithEmail(String email) async {
+  Future<void> _signInWithEmail(String? email) async {
     state = SignInState.loading(state);
 
     // TODO: Perform processing of details from API

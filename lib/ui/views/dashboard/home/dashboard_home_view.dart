@@ -156,11 +156,11 @@ class _DashboardHomeViewState extends State<DashboardHomeView> {
 }
 
 class GridTile extends StatelessWidget {
-  final String label;
-  final Color color;
+  final String? label;
+  final Color? color;
   final Widget icon;
 
-  const GridTile({Key key, this.label, this.color, this.icon})
+  const GridTile({Key? key, this.label, this.color, required this.icon})
       : assert(icon != null),
         super(key: key);
 
@@ -185,7 +185,7 @@ class GridTile extends StatelessWidget {
             ),
             Spacer(),
             Text(
-              label,
+              label!,
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
             ),
           ],

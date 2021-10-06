@@ -12,22 +12,22 @@ class AssetIcon extends StatelessWidget {
   /// The preferred color of the icon.
   ///
   /// It defaults to the color in the current [IconTheme].
-  final Color color;
+  final Color? color;
 
   /// The preferred size of the icon in logical pixels.
   ///
   /// It defaults to the size in the current [IconTheme].
-  final double size;
+  final double? size;
 
   /// Semantic label for the icon.
   ///
   /// It does not show up in the UI.
-  final String semanticLabel;
+  final String? semanticLabel;
 
   /// Whether the icon has a dot.
   ///
   /// An example is the notification on the home screen.
-  final bool hasDot;
+  final bool? hasDot;
 
   /// The preferred color of the dot.
   ///
@@ -36,8 +36,8 @@ class AssetIcon extends StatelessWidget {
   final Color dotColor;
 
   const AssetIcon({
-    Key key,
-    @required this.icon,
+    Key? key,
+    required this.icon,
     this.color,
     this.size,
     this.semanticLabel,
@@ -62,12 +62,12 @@ class AssetIcon extends StatelessWidget {
           Positioned(
             top: 1,
             right: 2,
-            height: size / 3,
+            height: size! / 3,
             width: size / 3,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: this.dotColor ?? Colors.orange,
+                color: this.dotColor,
               ),
             ),
           ),

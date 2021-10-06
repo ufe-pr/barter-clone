@@ -36,26 +36,26 @@ class _CreatePasswordViewState extends State<CreatePasswordView> {
 }
 
 class CreatePasswordBody extends ConsumerWidget {
-  final bool passwordVisible;
-  final VoidCallback togglePasswordVisibility;
+  final bool? passwordVisible;
+  final VoidCallback? togglePasswordVisibility;
 
   CreatePasswordBody(
-      {Key key, this.passwordVisible, this.togglePasswordVisibility})
+      {Key? key, this.passwordVisible, this.togglePasswordVisibility})
       : super(key: key);
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    var state = watch(createPasswordProvider.state);
-    var provider = context.read(createPasswordProvider);
+    var state = watch(createPasswordProvider);
+    var provider = watch(createPasswordProvider.notifier);
     return Form(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           TextFormField(
-            obscureText: !this.passwordVisible,
+            obscureText: !this.passwordVisible!,
             onChanged: provider.updatePassword,
             decoration: InputDecoration(
               suffixIcon: IconButton(
-                icon: Icon(this.passwordVisible
+                icon: Icon(this.passwordVisible!
                     ? Icons.visibility
                     : Icons.visibility_off),
                 onPressed: togglePasswordVisibility,
@@ -100,11 +100,11 @@ class CreatePasswordBody extends ConsumerWidget {
 }
 
 class _ValidationConditionWidget extends StatelessWidget {
-  final bool conditionMet;
+  final bool? conditionMet;
   final String condition;
 
   const _ValidationConditionWidget(
-      {Key key, @required this.conditionMet, @required this.condition})
+      {Key? key, required this.conditionMet, required this.condition})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -115,8 +115,8 @@ class _ValidationConditionWidget extends StatelessWidget {
           SizedBox(
             width: 24,
             child: Icon(
-              conditionMet ? Icons.check_circle : Icons.radio_button_off,
-              color: conditionMet ? Colors.green.shade900 : Colors.black,
+              conditionMet! ? Icons.check_circle : Icons.radio_button_off,
+              color: conditionMet! ? Colors.green.shade900 : Colors.black,
             ),
           ),
           const SizedBox(width: 10),

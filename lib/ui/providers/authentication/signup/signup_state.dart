@@ -1,12 +1,12 @@
 class SignUpState {
-  final SignUpStatus status;
+  final SignUpStatus? status;
 
-  final String message;
+  final String? message;
 
-  final String email;
-  final String referralCode;
-  final String phoneNumber;
-  final String iso2Code;
+  final String? email;
+  final String? referralCode;
+  final String? phoneNumber;
+  final String? iso2Code;
 
   const SignUpState(
       {this.message,
@@ -16,7 +16,7 @@ class SignUpState {
       this.phoneNumber: "",
       this.iso2Code: "NG"});
 
-  SignUpState.loading([SignUpState previousState])
+  SignUpState.loading([SignUpState? previousState])
       : status = SignUpStatus.LOADING,
         email = previousState?.email,
         referralCode = previousState?.referralCode,
@@ -24,7 +24,7 @@ class SignUpState {
         message = previousState?.message,
         iso2Code = previousState?.iso2Code;
 
-  SignUpState.error(String error, [SignUpState previousState])
+  SignUpState.error(String error, [SignUpState? previousState])
       : status = SignUpStatus.ERROR,
         message = error,
         email = previousState?.email,
@@ -32,7 +32,7 @@ class SignUpState {
         phoneNumber = previousState?.phoneNumber,
         iso2Code = previousState?.iso2Code;
 
-  SignUpState.success(String message, [SignUpState previousState])
+  SignUpState.success(String message, [SignUpState? previousState])
       : status = SignUpStatus.SUCCESS,
         message = message,
         email = previousState?.email,
@@ -41,10 +41,10 @@ class SignUpState {
         iso2Code = previousState?.iso2Code;
 
   SignUpState copyWith(
-      {String email,
-      String phoneNumber,
-      String referralCode,
-      String iso2Code}) {
+      {String? email,
+      String? phoneNumber,
+      String? referralCode,
+      String? iso2Code}) {
     return SignUpState(
       message: this.message,
       email: email ?? this.email,
